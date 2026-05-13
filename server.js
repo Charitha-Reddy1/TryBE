@@ -1,3 +1,7 @@
+import dotenv from "dotenv";
+dotenv.config();
+
+
 import express from "express";
 import expressLayouts from "express-ejs-layouts";
 import cors from "cors";
@@ -6,9 +10,7 @@ import authRouter from "./routes/authRoute.js";
 import scoreRouter from "./routes/scoreRoute.js"
 import session from "express-session";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 
-dotenv.config();
 
 const app = express();
 
@@ -42,6 +44,7 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
+console.log(process.env.MONGO_URI);
 
 mongoose
   .connect(process.env.MONGO_URI)
