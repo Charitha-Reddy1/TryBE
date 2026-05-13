@@ -49,6 +49,8 @@ const signup = async (req, res) => {
 
   try {
 
+    console.log(req.body);
+
     let { name, password } = req.body;
 
     const existingUser =
