@@ -46,16 +46,34 @@ const registerUser = async (req, res) => {
 
 
 const signup = async (req, res) => {
-  let { name, password } = req.body;
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  try {
 
-  const response = await userModel.create({
-    name,
-    password: hashedPassword,
-  });
+    let { name, password } = req.body;
 
-  res.json(response);
+    console.log(req.body);
+
+    const hashedPassword =
+      await bcrypt.hash(password, 10);
+
+    const response =
+      await userModel.create({
+        name,
+        password: hashedPassword,
+      });
+
+    res.json(response);
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      error: error.message,
+    });
+
+  }
+
 };
 
 const signin = async (req, res) => {
