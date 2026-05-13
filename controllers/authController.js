@@ -51,7 +51,16 @@ const signup = async (req, res) => {
 
     let { name, password } = req.body;
 
-    console.log(req.body);
+    const existingUser =
+      await userModel.findOne({ name });
+
+    if (existingUser) {
+
+      return res.json({
+        error: "User already exists",
+      });
+
+    }
 
     const hashedPassword =
       await bcrypt.hash(password, 10);
