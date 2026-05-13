@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
-dotenv.config();
-
+dotenv.config({ path: "./.env" });
+console.log(process.env.MONGO_URI);
 
 import express from "express";
 import expressLayouts from "express-ejs-layouts";
@@ -44,7 +44,6 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-console.log(process.env.MONGO_URI);
 
 mongoose
   .connect(process.env.MONGO_URI)
