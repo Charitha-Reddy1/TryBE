@@ -7,4 +7,4 @@ const scoreRouter = express.Router();
 scoreRouter.post("/save", saveScore);
 scoreRouter.get("/:userName",getScores);
 
-export default scoreRouter;
+export default scoreRouter; 

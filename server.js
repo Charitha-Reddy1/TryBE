@@ -6,6 +6,7 @@ import authRouter from "./routes/authRoute.js";
 import scoreRouter from "./routes/scoreRoute.js"
 import session from "express-session";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
 const app = express();
 
@@ -39,10 +40,18 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
+dotenv.config();
+
 mongoose
-  .connect("mongodb://127.0.0.1:27017/quizapp")
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
+
+
+/* mongoose
+   .connect("mongodb://127.0.0.1:27017/quizapp")
+   .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log(err));*/
 
 app.use("/auth", authRouter);
 app.use("/users", userRouter);
