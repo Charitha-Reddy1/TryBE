@@ -5,18 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QUIZ APP</title>
     <link rel="stylesheet" href="/css/styles.css" />
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
   </head>
   <body>
     <div>
         <div class="header">
         <img src="/images/quiz.webp" class="logo" />
             <ul>
-                <li><a href="/" style="color:white;">Home</a></li>
+               <li>
+                <a href="/" class="nav-icon">
+                  <i class="fa-solid fa-house"></i>
+                </a>
+              </li>
                 <% if (user) { %>
-                <li><a href="/users" style="color:white;">Users</a></li>
-                 <li><a href="/auth/logout" style="color:white;">Logout</a></li>
+                <li>
+                  <a href="/users" class="nav-icon">
+                    <i class="fa-solid fa-users"></i>
+                  </a>
+                </li>
+                <li>
+                <a href="/auth/logout" class="nav-icon">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+              </li>
                 <% } else { %>
-                <li><a href="/auth/login" style="color:white;">Login</a></li>
+                <li>
+  <a href="/auth/login" class="nav-icon">
+    <i class="fa-solid fa-right-to-bracket"></i>
+  </a>
+</li>
                 <% } %>
                
             </ul>

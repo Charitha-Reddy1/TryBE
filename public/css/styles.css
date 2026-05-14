@@ -9,11 +9,11 @@
     padding:10px
 }
 
-/* .header h1{
+.header h1{
     color: white;
     margin: 0;
     text-align:center;
-} */
+}
 
 .header li{
     display: inline-block;
@@ -21,7 +21,7 @@
     font-size: 20px;
 }
 .footer{
-    background-color: silver;
+    background-color: rgb(185, 27, 27);
     padding: 5px;
 }
 .row {
@@ -46,4 +46,61 @@
     width: 320px;
     height: 340px;   /* fixed box height */
 
+}
+
+
+.edit-btn{
+    color:black;
+    background-color:rgb(105, 213, 250);
+    cursor:pointer;
+    padding:10px 20px;
+    margin:10px;
+    border:0px;
+    border-radius:5px;
+}
+
+.dlt-btn{
+    color:black;
+    background-color:rgb(105, 213, 250);
+    cursor:pointer;
+    padding:10px 20px;
+    margin:10px;
+    border:0px;
+    border-radius:5px;
+}
+
+.reg-btn{
+    color:black;
+    background-color:rgb(105, 213, 250);
+    cursor:pointer;
+    padding:10px 20px;
+    margin:10px;
+    border:0px;
+    border-radius:5px;
+          display: block;
+      margin-left: auto;
+      margin-right: auto;
+}
+
+
+.nav-icon{
+    color:white;
+}
+
+.nav-icon:hover {
+  color: #38bdf8;      /* changes color */
+  transform: scale(1.1); /* slightly enlarges */
+}
+
+.adduser-icon{
+  padding: 10px 15px;
+  color: brown;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 100px;
 }

@@ -3,13 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit User</title>
+     <style>
+
+
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      width: 320px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #1e3a8a;
+      text-align:center;
+      margin-top:30px;
+    }
+
+    input {
+      width: 30%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button {
+      width: 20%;
+      padding: 12px;
+      border: none;
+      background-color: #2563eb;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+    }
+
+  </style>
 </head>
 <body>
     <h2>User Edit Form</h2>
     <form action="/users/<%= user._id %>/save" method="POST">
         <p><input type="text" name="name" value="<%= user.name %>"></p>
-        <p><input type="text" name="password" ></p>
+        <p><input type="text" name="password" placeholder="Enter new password"></p>
         <p><button>Save</button></p>
     </form>
 </body>

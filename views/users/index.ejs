@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
 </head>
 <body>
-    <h2>Users Admin Page</h2>
-    <a href="/users/add">Add User</a>
-    <ol>
+    <div class="container">
+    <h2 style="padding:30px 0px ; color:blue;">Users Admin Page</h2>
+    <!-- <a href="/users/add">Add User</a> -->
+    <a href="/users/add" class="adduser-icon">
+                    <i class="fa-solid fa-user-plus">Add User</i>
+                  </a>
+    <ol style="font-size:25px;">
     <% users.forEach(user => { %>
-        <li><%= user.name %>-
-            <%= user.password %>-
-            <a href="/users/<%= user._id %>/edit">Edit</a>-
-            <a href="/users/<%= user._id %>/delete">Delete</a>
+        <li>
+            <div class='user-info'  style="font-size:25px;"><strong>Name:</strong><%= user.name %><br>
+                <strong>Password:</strong><%= user.password %></div>
+            <button onclick='window.location.href="/users/<%= user._id %>/edit"' class="edit-btn">Edit</button>
+            <button onclick='window.location.href="/users/<%= user._id %>/delete"' class="dlt-btn">Delete</button>
         </li>
     <% }) %>
     </ol>
+
+    </div>
 </body>
 </html>

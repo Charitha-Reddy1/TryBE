@@ -4,6 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+         <style>
+
+
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      width: 320px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #1e3a8a;
+      text-align:center;
+      margin-top:30px;
+    }
+
+    input {
+      width: 30%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button {
+      width: 20%;
+      padding: 12px;
+      border: none;
+      background-color: #2563eb;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+    }
+
+  </style>
 </head>
 <body>
     <h2>Registration Form</h2>
@@ -12,6 +63,6 @@
         <p><input type="password" name="password" placeholder="Password"></p>
         <p><button>Submit</button></p>
     </form>
-    <p><a href="/auth/login">Already a member? Login here</a></p>
+   <p style="text-align:center; margin-top:10px;">Already a Member?<button onclick='window.location.href="/auth/login"' class="reg-btn">Click to Login</button></p>
 </body>
 </html>
