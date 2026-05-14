@@ -65,3 +65,7 @@ const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// Run in two terminals
+// 1)browser-sync start --proxy "localhost:5000" --files "views/**/*.ejs, public/**/*.*"
+// 2)nodemon server.js
