@@ -9,9 +9,9 @@ const login = async (req, res) => {
 };
 
 const validateUser = async (req, res) => {
-  const { name, password } = req.body;
+  const { email, password } = req.body;
 
-  const user = await userModel.findOne({ name });
+  const user = await userModel.findOne({ email });
 
   if (user) {
     const isMatch = await bcrypt.compare(password, user.password);
@@ -51,10 +51,10 @@ const signup = async (req, res) => {
 
     console.log(req.body);
 
-    let { name, password } = req.body;
+    let { email, password } = req.body;
 
     const existingUser =
-      await userModel.findOne({ name });
+      await userModel.findOne({ email });
 
     if (existingUser) {
 
@@ -69,7 +69,7 @@ const signup = async (req, res) => {
 
     const response =
       await userModel.create({
-        name,
+        email,
         password: hashedPassword,
       });
 
@@ -88,16 +88,16 @@ const signup = async (req, res) => {
 };
 
 const signin = async (req, res) => {
-  let { name, password } = req.body;
+  let { email, password } = req.body;
 
-  const user = await userModel.findOne({ name });
+  const user = await userModel.findOne({ email });
 
   if (user) {
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (isMatch) {
       const userObj = {
-        name: user.name,
+        email: user.email,
       };
 
       const token = jwt.sign(userObj, SECRET, {

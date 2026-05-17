@@ -52,4 +52,24 @@ const getScores = async (req, res) => {
 
 };
 
-export { saveScore,getScores };
+const getLeaderboard = async (req, res) => {
+
+  try {
+
+    const scores = await scoreModel
+      .find()
+      .sort({ score: -1 });
+
+    res.json(scores);
+
+  } catch (error) {
+
+    res.status(500).json({
+      error: "Failed to fetch leaderboard",
+    });
+
+  }
+
+};
+
+export { saveScore,getScores,getLeaderboard, };
