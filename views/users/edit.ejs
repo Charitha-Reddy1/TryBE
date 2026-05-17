@@ -59,7 +59,7 @@
 <body>
     <h2>User Edit Form</h2>
     <form action="/users/<%= user._id %>/save" method="POST">
-        <p><input type="text" name="name" value="<%= user.name %>"></p>
+        <p><input type="email" name="email" value="<%= user.email %>"></p>
         <p><input type="text" name="password" placeholder="Enter new password"></p>
         <p><button>Save</button></p>
     </form>
