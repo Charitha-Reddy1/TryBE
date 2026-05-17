@@ -19,7 +19,7 @@
     <ol style="font-size:25px;">
     <% users.forEach(user => { %>
         <li>
-            <div class='user-info'  style="font-size:25px;"><strong>Name:</strong><%= user.email %><br>
+            <div class='user-info'  style="font-size:25px;"><strong>Email:</strong><%= user.email || "No Email"%><br>
                 <strong>Password:</strong><%= user.password %></div>
             <button onclick='window.location.href="/users/<%= user._id %>/edit"' class="edit-btn">Edit</button>
             <button onclick='window.location.href="/users/<%= user._id %>/delete"' class="dlt-btn">Delete</button>
