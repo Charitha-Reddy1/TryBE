@@ -51,7 +51,7 @@ const signup = async (req, res) => {
 
     console.log(req.body);
 
-    let { email, password } = req.body;
+    let {name, email, password } = req.body;
 
     const existingUser =
       await userModel.findOne({ email });
@@ -69,6 +69,7 @@ const signup = async (req, res) => {
 
     const response =
       await userModel.create({
+        name,
         email,
         password: hashedPassword,
       });
@@ -97,6 +98,7 @@ const signin = async (req, res) => {
 
     if (isMatch) {
       const userObj = {
+        name:user.name,
         email: user.email,
       };
 
