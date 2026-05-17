@@ -31,11 +31,61 @@ const edituserForm = async (req, res) => {
 
 const saveuser = async (req, res) => {
   const id = req.params.id;
+
   const body = req.body;
-  const hashedPassword = await bcrypt.hash(body.password, 10);
-  body.password = hashedPassword;
-  await userModel.findByIdAndUpdate(id, req.body);
-  res.redirect("/users")
+
+  if(body.password){
+
+    const hashedPassword =
+      await bcrypt.hash(body.password, 10);
+
+    body.password = hashedPassword;
+
+  }
+
+  await userModel.findByIdAndUpdate(
+    id,
+    body
+  );
+
+  res.redirect("/users");
+};
+
+const updateUser = async (req, res) => {
+
+  try {
+
+    const { id } = req.params;
+
+    const { name } = req.body;
+
+    const updatedUser =
+      await userModel.findByIdAndUpdate(
+
+        id,
+
+        {
+          name,
+        },
+
+        {
+          new: true,
+        }
+
+      );
+
+    res.json(updatedUser);
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      error: "Failed to update user",
+    });
+
+  }
+
 };
 
 export {
@@ -44,5 +94,6 @@ export {
   adduserForm,
   deleteuser,
   edituserForm,
-  saveuser
+  saveuser,
+  updateUser,
 };
