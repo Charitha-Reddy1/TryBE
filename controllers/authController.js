@@ -98,6 +98,7 @@ const signin = async (req, res) => {
 
     if (isMatch) {
       const userObj = {
+        _id:user._id,
         name:user.name,
         email: user.email,
       };
