@@ -1,6 +1,6 @@
 import express from "express";
 
-import { saveScore,getScores ,getLeaderboard,getUserStats} from "../controllers/scoreController.js";
+import { saveScore,getScores ,getLeaderboard,getUserStats,getTopicLeaderboard} from "../controllers/scoreController.js";
 
 const scoreRouter = express.Router();
 
