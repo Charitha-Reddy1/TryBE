@@ -1,5 +1,69 @@
 import scoreModel from "../models/scoreModel.js";
 
+
+const getUserStats = async (req, res) => {
+
+  try {
+
+    const userName =
+      req.params.userName;
+
+    const userScores =
+      await scoreModel.find({
+        userName,
+      });
+
+    const quizzesCompleted =
+      userScores.length;
+
+    let bestScore = 0;
+
+    userScores.forEach((item) => {
+
+      const percent =
+        Math.round(
+          (item.score / item.total) * 100
+        );
+
+      if (percent > bestScore) {
+        bestScore = percent;
+      }
+
+    });
+
+    const leaderboard =
+      await scoreModel
+        .find()
+        .sort({ score: -1 });
+
+    const rank =
+      leaderboard.findIndex(
+        (item) =>
+          item.userName === userName
+      ) + 1;
+
+    res.json({
+
+      quizzesCompleted,
+
+      bestScore,
+
+      rank,
+
+    });
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      error: "Failed to fetch stats",
+    });
+
+  }
+
+};
+
 const saveScore = async (req, res) => {
 
   try {
@@ -72,4 +136,4 @@ const getLeaderboard = async (req, res) => {
 
 };
 
-export { saveScore,getScores,getLeaderboard, };
+export { saveScore,getScores,getLeaderboard, getUserStats};
