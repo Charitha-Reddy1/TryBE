@@ -1,5 +1,32 @@
 import scoreModel from "../models/scoreModel.js";
 
+const getTopicLeaderboard =
+  async (req, res) => {
+
+  try {
+
+    const topic =
+      req.params.topic;
+
+    const scores =
+      await scoreModel
+        .find({ topic })
+        .sort({ score: -1 });
+
+    res.json(scores);
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      error:
+        "Failed to fetch topic leaderboard",
+    });
+
+  }
+
+};
 
 const getUserStats = async (req, res) => {
 
@@ -136,4 +163,4 @@ const getLeaderboard = async (req, res) => {
 
 };
 
-export { saveScore,getScores,getLeaderboard, getUserStats};
+export { saveScore,getScores,getLeaderboard, getUserStats,getTopicLeaderboard};
