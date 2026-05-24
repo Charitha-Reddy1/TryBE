@@ -89,31 +89,69 @@ const signup = async (req, res) => {
 };
 
 const signin = async (req, res) => {
-  let { email, password } = req.body;
 
-  const user = await userModel.findOne({ email });
+  try {
 
-  if (user) {
-    const isMatch = await bcrypt.compare(password, user.password);
+    let { email, password } = req.body;
 
-    if (isMatch) {
-      const userObj = {
-        _id:user._id,
-        name:user.name,
-        email: user.email,
-      };
+    const user =
+      await userModel.findOne({ email });
 
-      const token = jwt.sign(userObj, SECRET, {
-        expiresIn: "1h",
+    if (user) {
+
+      const isMatch =
+        await bcrypt.compare(
+          password,
+          user.password
+        );
+
+      if (isMatch) {
+
+        const userObj = {
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+        };
+
+        const token = jwt.sign(
+          userObj,
+          SECRET,
+          {
+            expiresIn: "1h",
+          }
+        );
+
+        res.json({
+          ...userObj,
+          token,
+        });
+
+      } else {
+
+        res.json({
+          error: "Invalid Password",
+        });
+
+      }
+
+    } else {
+
+      res.json({
+        error: "Invalid User",
       });
 
-      res.json({ ...userObj, token });
-    } else {
-      res.json({ error: "Invalid Password" });
     }
-  } else {
-    res.json({ error: "Invalid User" });
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      error: error.message,
+    });
+
   }
+
 };
 
 const logout = (req, res) => {
